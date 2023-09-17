@@ -12,9 +12,9 @@ jobs:
      - name: multiple command
        uses: appleboy/ssh-action@master
        with:
-         host: ${{ secrets.HOST }}
-         username: ${{ secrets.USER }}
-         key: ${{secrets.KEY}}
+         host: ${{ secrets.FTP_SERVER }}
+         username: ${{ secrets.FTP_USERNAME }}
+         key: ${{secrets.SSH_KEY}}
          port: ${{ secrets.PORT }}
          script: |
            cd home/amackapp.com/public_html/api/
