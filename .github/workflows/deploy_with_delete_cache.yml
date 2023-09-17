@@ -1,10 +1,6 @@
-name: Deploy Dev to Server With Out Migrate Fresh
+name: Clear Cache
 on:
- # Triggers the workflow on push or pull request events but only for the main branch
-  pull_request:
-    branches:
-      - main
-    types: [closed]
+
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
 
@@ -16,11 +12,15 @@ jobs:
      - name: multiple command
        uses: Samkirkland/FTP-Deploy-Action@3.1.1
        with:
-         ftp-server: ${{ secrets.FTP_SERVER }}
-         ftp-username: ${{ secrets.FTP_USERNAME }}
-         ftp-password: ${{secrets.FTP_PASSWORD}}
-         script: |
+        ftp-server: ${{ secrets.FTP_SERVER }}
+        ftp-username: ${{ secrets.FTP_USERNAME }}
+        ftp-password: ${{secrets.FTP_PASSWORD}}
+        script: |
            cd /home/amackapp/public_html/api/api/
            ls
+           git pull origin dev
+           php artisan config:clear
+           php artisan cache:clear
            php artisan config:cache
-        
+           php artisan passport:install
+           
