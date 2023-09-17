@@ -16,7 +16,7 @@ jobs:
         ftp-username: ${{ secrets.FTP_USERNAME }}
         ftp-password: ${{secrets.FTP_PASSWORD}}
         script: |
-           cd /home/amackapp/public_html/api/
+           cd home/amackapp/public_html/api/
            ls
            git pull origin dev
            php artisan config:clear
