@@ -10,17 +10,17 @@ jobs:
     runs-on: ubuntu-latest
     steps:
      - name: multiple command
-       uses: Samkirkland/FTP-Deploy-Action@3.1.1
+       uses: appleboy/ssh-action@master
        with:
-        ftp-server: ${{ secrets.FTP_SERVER }}
-        ftp-username: ${{ secrets.FTP_USERNAME }}
-        ftp-password: ${{secrets.FTP_PASSWORD}}
-        script: |
-           cd home/amackapp/public_html/api/
+         host: ${{ secrets.HOST }}
+         username: ${{ secrets.USER }}
+         key: ${{secrets.KEY}}
+         port: ${{ secrets.PORT }}
+         script: |
+           cd home/amackapp.com/public_html/api/
            ls
            git pull origin dev
            php artisan config:clear
            php artisan cache:clear
            php artisan config:cache
            php artisan passport:install
-           
