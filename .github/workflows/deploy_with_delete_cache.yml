@@ -19,7 +19,6 @@ jobs:
          script: |
            cd home/amackapp.com/public_html/api/
            ls
-           git pull origin dev
            php artisan config:clear
            php artisan cache:clear
            php artisan config:cache
