@@ -19,11 +19,6 @@ jobs:
          host: ${{ secrets.FTP_SERVER }}
          username: ${{ secrets.FTP_USERNAME }}
          password: ${{secrets.FTP_PASSWORD}}
-         port: ${{ secrets.PORT }}
          script: |
-           cd domains/amackapp.com/public_html/api/
            ls
-           git pull origin dev
-           php artisan config:clear
-           php artisan cache:clear
-           php artisan passport:install
+        
