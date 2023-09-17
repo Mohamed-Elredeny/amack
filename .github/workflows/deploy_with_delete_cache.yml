@@ -20,7 +20,7 @@ jobs:
          ftp-username: ${{ secrets.FTP_USERNAME }}
          ftp-password: ${{secrets.FTP_PASSWORD}}
          script: |
-           cd /home/amackapp/public_html/api/
+           cd /home/amackapp/public_html/api/api/
            ls
            php artisan config:cache
         
