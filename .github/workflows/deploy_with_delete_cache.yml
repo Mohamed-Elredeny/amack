@@ -18,7 +18,7 @@ jobs:
        with:
          host: ${{ secrets.FTP_SERVER }}
          username: ${{ secrets.FTP_USERNAME }}
-         key: ${{secrets.SSH_KEY}}
+         password: ${{secrets.FTP_PASSWORD}}
          port: ${{ secrets.PORT }}
          script: |
            cd domains/amackapp.com/public_html/api/
