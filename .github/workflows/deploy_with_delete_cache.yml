@@ -17,7 +17,7 @@ jobs:
          key: ${{secrets.SSH_KEY}}
          port: ${{ secrets.PORT }}
          script: |
-           cd home/amackapp.com/public_html/api/
+           cd /home/amackapp.com/public_html/api/
            ls
            php artisan config:clear
            php artisan cache:clear
