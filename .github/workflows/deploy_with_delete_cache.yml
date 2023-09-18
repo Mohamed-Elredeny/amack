@@ -1,25 +1,26 @@
 name: Clear Cache
 on:
-
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
-
 
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-     - name: multiple command
-       uses: appleboy/ssh-action@master
-       with:
-         host: ${{ secrets.FTP_SERVER }}
-         username: ${{ secrets.FTP_USERNAME }}
-         key: ${{secrets.SSH_KEY}}
-         port: ${{ secrets.PORT }}
-         script: |
-           cd /api/
-           ls
-           php artisan config:clear
-           php artisan cache:clear
-           php artisan config:cache
-           php artisan passport:install
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+
+      - name: SSH into Host and Execute Commands
+        uses: appleboy/ssh-action@master
+        with:
+          host: c02.tmdcloud.eu  # Your SSH hostname
+          username: amackapp  # Your SSH username
+          password: 7L3W2+Vd6Mh!ui
+          port: 16969  # SSH port for your host
+          script: |
+            cd /api/
+            ls
+            php artisan config:clear
+            php artisan cache:clear
+            php artisan config:cache
+            php artisan passport:install
