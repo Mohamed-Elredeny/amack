@@ -18,7 +18,7 @@ jobs:
           password: 7L3W2+Vd6Mh!ui
           port: 16969  # SSH port for your host
           script: |
-            cd /api/
+            cd api/
             ls
             php artisan config:clear
             php artisan cache:clear
